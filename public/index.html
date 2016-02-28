@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-cloak>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>Angular Getter / Setter</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <!--[if lt IE 9]>
+    <script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="">
+</head>
+<body ng-controller="MainCtrl as $ctrl">
+
+    <div class="container">
+        <h2>{{ $ctrl.appName() }}</h2>
+
+        <table class="table table-bordered">
+            <thead>
+                <td>First</td>
+                <td>Last</td>
+                <td>Full</td>
+                <td>Hobbies</td>
+                <td>&nbsp;</td>
+            </thead>
+            <tbody>
+                <tr ng-repeat="person in $ctrl.people">
+                    <td>
+                        <input
+                                type="text"
+                                ng-model="person.fname"
+                                ng-change="$ctrl.updateFullName($index)"
+                        >
+                    </td>
+                    <td>
+                        <input
+                                type="text"
+                                ng-model="person.lname"
+                                ng-change="$ctrl.updateFullName($index)"
+                        >
+                    </td>
+                    <td>{{person.fullname}}</td>
+                    <td>{{ person.hobbies }}</td>
+                    <td>
+                        <multiselect
+                                ng-model="person.hobbyList"
+                                options="$ctrl.hobbies"
+                                show-search="true"
+                                show-unselect-all="true"
+                                show-select-all="true"
+                                ng-change="$ctrl.updateHobbies($index)"
+                        >
+                        </multiselect>
+                    </td>
+                </tr>
+            </tbody>
+            </thead>
+        </table>
+    </div>
+
+    <!--Vendor Packages-->
+    <script type="text/javascript" src="vendor/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/bootstrap.min.js"></script>
+    <script type="text/javascript" src="vendor/angular.min.js"></script>
+    <script type="text/javascript" src="vendor/angular-bootstrap-multiselect.min.js"></script>
+
+
+    <!--Application Code-->
+    <script type="text/javascript" src="js/app.module.js"></script>
+    <script type="text/javascript" src="js/app.constants.js"></script>
+    <script type="text/javascript" src="js/main/Main.controller.js"></script>
+    <script type="text/javascript" src="js/main/Main.service.js"></script>
+
+</body>
+</html>

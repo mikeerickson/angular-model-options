@@ -1,0 +1,54 @@
+{
+  "dogs": [
+    {
+      "id": 1,
+      "name": "shilo"
+    },
+    {
+      "id": 2,
+      "name": "honu"
+    },
+    {
+      "id": 3,
+      "name": "Gunner"
+    }
+  ],
+  "people": [
+    {
+      "id": 1,
+      "fname": "Mike",
+      "lname": "Erickson",
+      "hobbies": "Baseball, Football, Lacrosse"
+    },
+    {
+      "id": 2,
+      "fname": "Kira",
+      "lname": "Erickson",
+      "hobbies": "Softball, Baseball"
+    },
+    {
+      "id": 3,
+      "fname": "Joelle",
+      "lname": "Asoau",
+      "hobbies": "Baseball, Softball"
+    },
+    {
+      "id": 4,
+      "fname": "Brady",
+      "lname": "Erickson",
+      "hobbies": "Lacrosse"
+    },
+    {
+      "id": 5,
+      "fname": "Bailey",
+      "lname": "Erickson",
+      "hobbies": "Softball, Volleyball"
+    },
+    {
+      "id": 6,
+      "fname": "Trevor",
+      "lname": "Erickson",
+      "hobbies": "Skateboarding"
+    }
+  ]
+}
