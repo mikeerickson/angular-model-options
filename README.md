@@ -1,4 +1,5 @@
 # angular-model-options
+
 Sample w/ Angular Bootstrap Multiselect
 
 This will expand soon!
@@ -10,4 +11,4 @@ This will expand soon!
 
 ### Alternate Multiselect
 
-(https://github.com/davidstutz/bootstrap-multiselect`)
+[Used w/ QueryTool](https://github.com/davidstutz/bootstrap-multiselect)
