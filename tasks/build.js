@@ -18,7 +18,7 @@
 	var path         = require('path');
 	var cleanCSS     = require('gulp-clean-css');
 
-	gulp.task('build:vendor', function(){
+	gulp.task('build:vendor:js', function(){
 		return gulp.src(config.vendor.src)
 			.on('error', handleErrors)
 			.pipe(concat(config.vendor.filename))
@@ -27,11 +27,20 @@
 			.pipe(console.flush.success('=== ' + config.vendor.filename + ' created -- ' + utils.timestamp() + ' ==='));
 	});
 
-	gulp.task('build:css', function(){
+	gulp.task('build:vendor:css', function(){
 		console.warning('TODO: Build Vendor CSS');
 	});
 
-	gulp.task('build:less', function () {
+	gulp.task('build:app:js', function() {
+		return gulp.src(config.app.src)
+			.on('error', handleErrors)
+			.pipe(concat(config.app.filename))
+			.pipe(uglify())
+			.pipe(gulp.dest(config.app.dest))
+			.pipe(console.flush.success('=== ' + config.app.filename + ' created -- ' + utils.timestamp() + ' ==='));
+	});
+
+	gulp.task('build:app:less', function () {
 		return gulp.src(config.css.src)
 			.pipe(less({
 				paths: [ path.join(__dirname, 'less', 'includes') ]
@@ -42,17 +51,9 @@
 			.pipe(console.flush.success('=== ' + config.css.filename + ' created -- ' + utils.timestamp() + ' ==='));
 	});
 
-	gulp.task('build:app', function() {
-		return gulp.src(config.app.src)
-			.on('error', handleErrors)
-			.pipe(concat(config.app.filename))
-			.pipe(uglify())
-			.pipe(gulp.dest(config.app.dest))
-			.pipe(console.flush.success('=== ' + config.app.filename + ' created -- ' + utils.timestamp() + ' ==='));
-	});
-
+	// Build All Resources
 	gulp.task('build', function(){
-		execute('build:vendor', 'build:app', 'build:css', 'build:less');
+		execute('build:vendor:js', 'build:vendor:css', 'build:app:js', 'build:app:less');
 	});
 
 })();
