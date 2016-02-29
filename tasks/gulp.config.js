@@ -25,6 +25,11 @@
 			],
 			exclude: './public/js/build.js'
 		},
+		css: {
+			src: ['./src/less/*.less'],
+			dest: './public/css',
+			filename: 'app.min.css'
+		},
 		vendor: {
 			src: [
 				'./node_modules/jquery/dist/jquery.min.js',
@@ -70,7 +75,6 @@
 			mocha: ['./specs/**/*.spec.js', './specs/**/*Spec.js','!./specs/browser/*'],
 			karma: ['./src/app/**/*.spec.js', './src/app/**/*Spec.js']
 		},
-
 		app: {
 			src: [
 				'./src/js/app.module.js',

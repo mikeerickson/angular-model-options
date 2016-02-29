@@ -14,6 +14,9 @@
 	var utils        = require('./utils/cd-utils');
 	var handleErrors = require('./utils/handleErrors');
 	var execute      = require('run-sequence');
+	var less         = require('gulp-less');
+	var path         = require('path');
+	var cleanCSS     = require('gulp-clean-css');
 
 	gulp.task('build:vendor', function(){
 		return gulp.src(config.vendor.src)
@@ -22,6 +25,21 @@
 			.pipe(uglify())
 			.pipe(gulp.dest(config.vendor.dest))
 			.pipe(console.flush.success('=== ' + config.vendor.filename + ' created -- ' + utils.timestamp() + ' ==='));
+	});
+
+	gulp.task('build:css', function(){
+		console.warning('TODO: Build Vendor CSS');
+	});
+
+	gulp.task('build:less', function () {
+		return gulp.src(config.css.src)
+			.pipe(less({
+				paths: [ path.join(__dirname, 'less', 'includes') ]
+			}))
+			.pipe(concat(config.css.filename))
+			.pipe(cleanCSS({compatibility: 'ie8'}))
+			.pipe(gulp.dest(config.css.dest))
+			.pipe(console.flush.success('=== ' + config.css.filename + ' created -- ' + utils.timestamp() + ' ==='));
 	});
 
 	gulp.task('build:app', function() {
@@ -33,17 +51,8 @@
 			.pipe(console.flush.success('=== ' + config.app.filename + ' created -- ' + utils.timestamp() + ' ==='));
 	});
 
-	// gulp.task('build:app', function() {
-	// 	return gulp.src(config.app.src)
-	// 		.on('error', handleErrors)
-	// 		.pipe(concat(config.app.filename))
-	// 		.pipe(uglify())
-	// 		.pipe(gulp.dest(config.app.dest))
-	// 		.pipe(console.flush.success('=== ' + config.app.filename + ' created -- ' + utils.timestamp() + ' ==='));
-	// });
-
-	gulp.task('compile', function(){
-		execute('compile:scripts');
+	gulp.task('build', function(){
+		execute('build:vendor', 'build:app', 'build:css', 'build:less');
 	});
 
 })();
