@@ -1,0 +1,9 @@
+{
+  "directory": "components",
+  "json": "bower.json",
+  "scripts": {
+    "preinstall": "",
+    "postinstall": "",
+    "preuninstall": ""
+  }
+}
